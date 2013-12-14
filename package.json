@@ -1,0 +1,22 @@
+{
+  "name": "csp-logger",
+  "version": "0.0.1",
+  "description": "CSP Logging Service",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gvn/csp-logger.git"
+  },
+  "keywords": [
+    "csp"
+  ],
+  "author": "Gavin Lazar Suntop @gvn",
+  "bugs": {
+    "url": "https://github.com/gvn/csp-logger/issues"
+  },
+  "homepage": "https://github.com/gvn/csp-logger",
+  "dependencies": {
+    "sequelize": "~2.0.0-beta.2",
+    "mysql": "~2.0.0-rc2"
+  }
+}
