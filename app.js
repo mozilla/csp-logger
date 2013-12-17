@@ -45,7 +45,8 @@ var cspViolation = sequelizeDB.define('cspViolation', {
   blockedURI: sequelize.STRING,
   sourceFile: sequelize.STRING,
   lineNumber: sequelize.INTEGER,
-  statusCode: sequelize.INTEGER
+  statusCode: sequelize.INTEGER,
+  userAgent: sequelize.TEXT // Non-standard property
 });
 
 // Create table
@@ -68,7 +69,8 @@ function storeViolation(reportBody) {
     blockedURI: reportBody['blocked-uri'],
     sourceFile: reportBody['source-file'],
     lineNumber: reportBody['column-number'],
-    statusCode: reportBody['status-code']
+    statusCode: reportBody['status-code'],
+    userAgent: reportBody['userAgent']
   }).complete(function () {
     console.log('Violation stored.');
   });
@@ -86,12 +88,16 @@ http.createServer(function (req, res) {
   });
 
   req.on('end', function () {
-    var json, body;
+    var json;
+    var body;
+    var userAgent = req.headers['user-agent'];
 
     try {
       body = Buffer.concat(bodyParts, bytes).toString('utf8');
       json = JSON.parse(body);
       console.log('Attempting to store violation:');
+
+      json.userAgent = userAgent;
 
       var violatorDomain = json['csp-report']['document-uri'].match(/\/\/(.*)\//)[1];
       var allowedDomain = false;
@@ -103,14 +109,21 @@ http.createServer(function (req, res) {
         }
       });
 
-      config.sourceBlacklist.forEach(function (source) {
-        if (json['csp-report']['source-file'] === source) {
-          allowedSource = false;
-        }
-      });
+      // Ensure source isn't blacklisted
+      if (config.sourceBlacklist) {
+        config.sourceBlacklist.forEach(function (source) {
+          if (json['csp-report']['source-file'] === source) {
+            allowedSource = false;
+          }
+        });
+      }
 
       if (allowedDomain && allowedSource) {
-        storeViolation(json['csp-report']);
+        var report = json['csp-report'];
+        report.userAgent = userAgent;
+        storeViolation(report);
+      } else {
+        console.log('Ignoring CSP report');
       }
     } catch (ex) {
       console.log(body);
