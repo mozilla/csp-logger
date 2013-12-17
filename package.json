@@ -17,6 +17,7 @@
   "homepage": "https://github.com/gvn/csp-logger",
   "dependencies": {
     "sequelize": "~2.0.0-beta.2",
-    "mysql": "~2.0.0-rc2"
+    "mysql": "~2.0.0-rc2",
+    "JSV": "~4.0.2"
   }
 }
