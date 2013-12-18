@@ -11,9 +11,13 @@
     "test": "grunt validate"
   },
   "keywords": [
-    "csp"
+    "csp", "security", "content security policy"
   ],
-  "author": "Gavin Lazar Suntop @gvn",
+  "author": "Mozilla",
+  "contributors": [{
+    "name": "Gavin Lazar Suntop",
+    "email": "gavin@gsuntop.com"
+  }],
   "bugs": {
     "url": "https://github.com/gvn/csp-logger/issues"
   },
@@ -27,5 +31,9 @@
     "grunt": "~0.4.2",
     "grunt-contrib-jshint": "~0.7.2",
     "grunt-jsbeautifier": "~0.2.6"
+  },
+  "license": "http://www.mozilla.org/MPL/2.0/",
+  "engines": {
+    "node": ">=0.10"
   }
 }
