@@ -1,5 +1,6 @@
 var http = require('http');
 var fs = require('fs');
+var url = require('url');
 var sequelize = require('sequelize');
 var JSV = require('JSV').JSV;
 
@@ -98,7 +99,7 @@ function cspPost(req, res) {
       console.log(body);
     }
 
-    var violatorDomain = json['csp-report']['document-uri'].match(/\/\/(.*)\//)[1];
+    var violatorDomain = url.parse(json['csp-report']['document-uri']).host;
     var allowedDomain = false;
     var allowedSource = true;
 
