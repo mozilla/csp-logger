@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git://github.com/gvn/csp-logger.git"
   },
+  "scripts": {
+    "test": "grunt validate"
+  },
   "keywords": [
     "csp"
   ],
@@ -19,5 +22,10 @@
     "sequelize": "~2.0.0-beta.2",
     "mysql": "~2.0.0-rc2",
     "JSV": "~4.0.2"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-jshint": "~0.7.2",
+    "grunt-jsbeautifier": "~0.2.6"
   }
 }

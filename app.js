@@ -1,6 +1,6 @@
 var http = require('http');
-var sequelize = require('sequelize');
 var fs = require('fs');
+var sequelize = require('sequelize');
 var JSV = require('JSV').JSV;
 
 var config = JSON.parse(fs.readFileSync('./env.json', {
@@ -70,7 +70,7 @@ function storeViolation(reportBody) {
     sourceFile: reportBody['source-file'],
     lineNumber: reportBody['column-number'],
     statusCode: reportBody['status-code'],
-    userAgent: reportBody['userAgent']
+    userAgent: reportBody.userAgent
   }).complete(function () {
     console.log('Violation stored.');
   });
@@ -92,55 +92,49 @@ http.createServer(function (req, res) {
     var body;
     var userAgent = req.headers['user-agent'];
 
+    // Attempt to parse JSON from stream
     try {
       body = Buffer.concat(bodyParts, bytes).toString('utf8');
       json = JSON.parse(body);
-      console.log('Attempting to store violation:');
-
-      json.userAgent = userAgent;
-
-      var violatorDomain = json['csp-report']['document-uri'].match(/\/\/(.*)\//)[1];
-      var allowedDomain = false;
-      var allowedSource = true;
-
-      config.domainWhitelist.forEach(function (domain) {
-        if (violatorDomain === domain) {
-          allowedDomain = true;
-        }
-      });
-
-      // Ensure source isn't blacklisted
-      if (config.sourceBlacklist) {
-        config.sourceBlacklist.forEach(function (source) {
-          if (json['csp-report']['source-file'] === source) {
-            allowedSource = false;
-          }
-        });
-      }
-
-      if (allowedDomain && allowedSource) {
-        var report = json['csp-report'];
-        report.userAgent = userAgent;
-        storeViolation(report);
-      } else {
-        console.log('Ignoring CSP report');
-      }
     } catch (ex) {
       console.log(body);
     }
-  });
 
-  req.on('close', function () {
-    console.log('req close');
+    var violatorDomain = json['csp-report']['document-uri'].match(/\/\/(.*)\//)[1];
+    var allowedDomain = false;
+    var allowedSource = true;
+
+    // Ensure domain is allowed to report
+    config.domainWhitelist.forEach(function (domain) {
+      if (violatorDomain === domain) {
+        allowedDomain = true;
+      }
+    });
+
+    // Ensure source isn't blacklisted
+    if (config.sourceBlacklist) {
+      config.sourceBlacklist.forEach(function (source) {
+        if (json['csp-report']['source-file'] === source) {
+          allowedSource = false;
+        }
+      });
+    }
+
+    // Log the CSP violation
+    if (allowedDomain && allowedSource) {
+      console.log('Attempting to store violation:');
+      var report = json['csp-report'];
+      report.userAgent = userAgent;
+      storeViolation(report);
+    } else {
+      console.log('Ignoring CSP report');
+    }
   });
 
   req.on('error', function () {
     console.log('req error');
   });
 
-  res.writeHead(200, {
-    'content-type': 'text/plain'
-  });
-
+  res.writeHead(200);
   res.end();
 }).listen(2600);
