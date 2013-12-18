@@ -76,9 +76,7 @@ function storeViolation(reportBody) {
   });
 }
 
-http.createServer(function (req, res) {
-  console.log('Incoming request: ' + req.url);
-
+function cspPost(req, res) {
   var bodyParts = [];
   var bytes = 0;
 
@@ -137,4 +135,27 @@ http.createServer(function (req, res) {
 
   res.writeHead(200);
   res.end();
+}
+
+http.createServer(function (req, res) {
+  console.log('Incoming request: ' + req.url);
+
+  function fail() {
+    res.writeHead(404);
+    res.end();
+  }
+
+  switch (req.url) {
+  case '/csp':
+  case '/csp/':
+    if (req.method === 'POST') {
+      cspPost(req, res);
+    } else {
+      fail();
+    }
+    break;
+  default:
+    fail();
+    break;
+  }
 }).listen(2600);
