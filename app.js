@@ -3,6 +3,9 @@ var fs = require('fs');
 var url = require('url');
 var sequelize = require('sequelize');
 var JSV = require('JSV').JSV;
+var express = require('express');
+
+var app = express();
 
 var config = JSON.parse(fs.readFileSync('./env.json', {
   encoding: 'utf8'
@@ -153,27 +156,12 @@ function cspGet(req, res) {
   });
 }
 
-http.createServer(function (req, res) {
-  console.log('Incoming request: ' + req.url);
+app.get('/csp', function (req, res) {
+  cspGet(req, res);
+});
 
-  function fail() {
-    res.writeHead(404);
-    res.end();
-  }
+app.post('/csp', function (req, res) {
+  cspPost(req, res);
+});
 
-  switch (req.url) {
-  case '/csp':
-  case '/csp/':
-    if (req.method === 'POST') {
-      cspPost(req, res);
-    } else if (req.method === 'GET') {
-      cspGet(req, res);
-    } else {
-      fail();
-    }
-    break;
-  default:
-    fail();
-    break;
-  }
-}).listen(2600);
+app.listen(2600);

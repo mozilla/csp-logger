@@ -11,13 +11,17 @@
     "test": "grunt validate"
   },
   "keywords": [
-    "csp", "security", "content security policy"
+    "csp",
+    "security",
+    "content security policy"
   ],
   "author": "Mozilla",
-  "contributors": [{
-    "name": "Gavin Lazar Suntop",
-    "email": "gavin@gsuntop.com"
-  }],
+  "contributors": [
+    {
+      "name": "Gavin Lazar Suntop",
+      "email": "gavin@gsuntop.com"
+    }
+  ],
   "bugs": {
     "url": "https://github.com/gvn/csp-logger/issues"
   },
@@ -25,7 +29,8 @@
   "dependencies": {
     "sequelize": "~2.0.0-beta.2",
     "mysql": "~2.0.0-rc2",
-    "JSV": "~4.0.2"
+    "JSV": "~4.0.2",
+    "express": "~3.4.7"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
