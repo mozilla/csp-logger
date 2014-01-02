@@ -138,6 +138,21 @@ function cspPost(req, res) {
   res.end();
 }
 
+// Return JSON of entire violations table
+function cspGet(req, res) {
+  var violations = [];
+
+  cspViolation.findAll().success(function (table) {
+    table.forEach(function (item) {
+      violations.push(item.dataValues);
+    });
+
+    res.writeHead(200);
+    res.write(JSON.stringify(violations));
+    res.end();
+  });
+}
+
 http.createServer(function (req, res) {
   console.log('Incoming request: ' + req.url);
 
@@ -151,6 +166,8 @@ http.createServer(function (req, res) {
   case '/csp/':
     if (req.method === 'POST') {
       cspPost(req, res);
+    } else if (req.method === 'GET') {
+      cspGet(req, res);
     } else {
       fail();
     }
