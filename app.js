@@ -142,6 +142,7 @@ function cspPost(req, res) {
 }
 
 // Return JSON of entire violations table
+
 function cspGet(req, res) {
   var violations = [];
 
@@ -156,11 +157,17 @@ function cspGet(req, res) {
   });
 }
 
-app.get('/csp', function (req, res) {
+app.all('*', function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
+
+app.get('/csp', function (req, res, next) {
   cspGet(req, res);
 });
 
-app.post('/csp', function (req, res) {
+app.post('/csp', function (req, res, next) {
   cspPost(req, res);
 });
 
