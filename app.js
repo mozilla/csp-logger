@@ -3,6 +3,9 @@ var fs = require('fs');
 var url = require('url');
 var sequelize = require('sequelize');
 var JSV = require('JSV').JSV;
+var express = require('express');
+
+var app = express();
 
 var config = JSON.parse(fs.readFileSync('./env.json', {
   encoding: 'utf8'
@@ -138,25 +141,34 @@ function cspPost(req, res) {
   res.end();
 }
 
-http.createServer(function (req, res) {
-  console.log('Incoming request: ' + req.url);
+// Return JSON of entire violations table
 
-  function fail() {
-    res.writeHead(404);
+function cspGet(req, res) {
+  var violations = [];
+
+  cspViolation.findAll().success(function (table) {
+    table.forEach(function (item) {
+      violations.push(item.dataValues);
+    });
+
+    res.writeHead(200);
+    res.write(JSON.stringify(violations));
     res.end();
-  }
+  });
+}
 
-  switch (req.url) {
-  case '/csp':
-  case '/csp/':
-    if (req.method === 'POST') {
-      cspPost(req, res);
-    } else {
-      fail();
-    }
-    break;
-  default:
-    fail();
-    break;
-  }
-}).listen(2600);
+app.all('*', function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
+
+app.get('/csp', function (req, res, next) {
+  cspGet(req, res);
+});
+
+app.post('/csp', function (req, res, next) {
+  cspPost(req, res);
+});
+
+app.listen(2600);
