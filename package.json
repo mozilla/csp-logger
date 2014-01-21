@@ -1,6 +1,6 @@
 {
   "name": "csp-logger",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "CSP Logging Service",
   "main": "app.js",
   "repository": {
@@ -11,13 +11,17 @@
     "test": "grunt validate"
   },
   "keywords": [
-    "csp", "security", "content security policy"
+    "csp",
+    "security",
+    "content security policy"
   ],
   "author": "Mozilla",
-  "contributors": [{
-    "name": "Gavin Lazar Suntop",
-    "email": "gavin@gsuntop.com"
-  }],
+  "contributors": [
+    {
+      "name": "Gavin Lazar Suntop",
+      "email": "gavin@gsuntop.com"
+    }
+  ],
   "bugs": {
     "url": "https://github.com/gvn/csp-logger/issues"
   },
