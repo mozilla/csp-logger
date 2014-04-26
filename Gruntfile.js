@@ -2,20 +2,20 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     jshint: {
-      all: ['*.js'],
+      all: ['*.js', 'lib/**/*.js'],
       options: {
         jshintrc: '.jshintrc'
       }
     },
     jsbeautifier: {
       modify: {
-        src: ['*.js'],
+        src: ['*.js', 'lib/**/*.js'],
         options: {
           config: '.jsbeautifyrc'
         }
       },
       validate: {
-        src: ['*.js'],
+        src: ['*.js', 'lib/**/*.js'],
         options: {
           mode: 'VERIFY_ONLY',
           config: '.jsbeautifyrc'

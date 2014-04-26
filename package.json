@@ -1,44 +1,45 @@
 {
-  "name": "csp-logger",
-  "version": "0.1.1",
-  "description": "CSP Logging Service",
-  "main": "app.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/gvn/csp-logger.git"
-  },
-  "scripts": {
-    "test": "grunt validate"
-  },
-  "keywords": [
-    "csp",
-    "security",
-    "content security policy"
-  ],
-  "author": "Mozilla",
-  "contributors": [
-    {
-      "name": "Gavin Lazar Suntop",
-      "email": "gavin@gsuntop.com"
+    "name": "csp-logger",
+    "version": "0.1.1",
+    "description": "CSP Logging Service",
+    "main": "app.js",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/gvn/csp-logger.git"
+    },
+    "scripts": {
+        "test": "grunt validate"
+    },
+    "keywords": [
+        "csp",
+        "security",
+        "content security policy"
+    ],
+    "author": "Mozilla",
+    "contributors": [
+        {
+            "name": "Gavin Lazar Suntop",
+            "email": "gavin@gsuntop.com"
+        }
+    ],
+    "bugs": {
+        "url": "https://github.com/gvn/csp-logger/issues"
+    },
+    "homepage": "https://github.com/gvn/csp-logger",
+    "dependencies": {
+        "JSV": "~4.0.2",
+        "express": "~3.4.7",
+        "sequelize": "^2.0.0-dev11",
+        "lodash": "^2.4.1",
+        "log4js": "^0.6.14"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.2",
+        "grunt-contrib-jshint": "~0.7.2",
+        "grunt-jsbeautifier": "~0.2.6"
+    },
+    "license": "http://www.mozilla.org/MPL/2.0/",
+    "engines": {
+        "node": ">=0.10"
     }
-  ],
-  "bugs": {
-    "url": "https://github.com/gvn/csp-logger/issues"
-  },
-  "homepage": "https://github.com/gvn/csp-logger",
-  "dependencies": {
-    "JSV": "~4.0.2",
-    "mysql": "~2.0.0-rc2",
-    "pg": "~2.11.0",
-    "sequelize": "~2.0.0-beta.2"
-  },
-  "devDependencies": {
-    "grunt": "~0.4.2",
-    "grunt-contrib-jshint": "~0.7.2",
-    "grunt-jsbeautifier": "~0.2.6"
-  },
-  "license": "http://www.mozilla.org/MPL/2.0/",
-  "engines": {
-    "node": ">=0.10"
-  }
 }
