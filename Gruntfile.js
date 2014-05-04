@@ -9,13 +9,13 @@ module.exports = function (grunt) {
     },
     jsbeautifier: {
       modify: {
-        src: ['*.js', 'lib/**/*.js'],
+        src: ['*.js', '*.json', 'lib/**/*.js'],
         options: {
           config: '.jsbeautifyrc'
         }
       },
       validate: {
-        src: ['*.js', 'lib/**/*.js'],
+        src: ['*.js', '*.json', 'lib/**/*.js'],
         options: {
           mode: 'VERIFY_ONLY',
           config: '.jsbeautifyrc'

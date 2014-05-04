@@ -1,8 +1,8 @@
-//var config = require('./lib/config');
+var config = require('./lib/config');
 var server = require('./lib/server');
 var store = require('./lib/store');
 
-server.listen(2600, function (reportData, req) {
+server.listen(config.port || 2600, function (reportObject, req) {
 
-  store.save(reportData);
+  store.save(reportObject);
 });
