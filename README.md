@@ -30,7 +30,7 @@ Enter `conf` folder and create a copy of `env.json.dist` called `env.json` to co
 
 ## Usage
 
-Configure your CSP to report to the `/csp` route of this service. Incoming reports will be logged to the `cspViolations` table of your designated SQL database.
+Configure your CSP to report to the `/csp` route of this service. Incoming reports will be logged to your designated storage.
 
 ## Testing policies
 
