@@ -1,4 +1,7 @@
 node_modules/
 conf/env.json
+env.json
 conf/logger.json
+logger.json
+csp.log
 TODO.txt
