@@ -1,6 +1,6 @@
 {
   "name": "csp-logger",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Content Security Policy Logging Service",
   "main": "lib/index.js",
   "bin": {
@@ -19,13 +19,16 @@
     "content security policy"
   ],
   "author": "Mozilla",
-  "contributors": [{
-    "name": "Gavin Lazar Suntop",
-    "email": "gavin@gsuntop.com"
-  },{
-    "name": "Zbyszek Tenerowicz",
-    "email": "naugtur@gmail.com"
-  }],
+  "contributors": [
+    {
+      "name": "Gavin Lazar Suntop",
+      "email": "gavin@gsuntop.com"
+    },
+    {
+      "name": "Zbyszek Tenerowicz",
+      "email": "naugtur@gmail.com"
+    }
+  ],
   "bugs": {
     "url": "https://github.com/mozilla/csp-logger/issues"
   },
