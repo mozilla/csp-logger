@@ -2,7 +2,10 @@
   "name": "csp-logger",
   "version": "0.1.1",
   "description": "CSP Logging Service",
-  "main": "app.js",
+  "main": "lib/index.js",
+  "bin": {
+    "csp-logger": "csp-logger.js"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/mozilla/csp-logger.git"
@@ -26,10 +29,11 @@
   "homepage": "https://github.com/mozilla/csp-logger",
   "dependencies": {
     "JSV": "~4.0.2",
-    "express": "~3.4.7",
-    "sequelize": "^2.0.0-dev11",
+    "express": "^4.4.0",
     "lodash": "^2.4.1",
-    "log4js": "^0.6.14"
+    "log4js": "^0.6.14",
+    "optimist": "^0.6.1",
+    "sequelize": "^2.0.0-dev11"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
