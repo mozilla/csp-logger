@@ -10,14 +10,14 @@ Configure your CSP to report to the `/csp` route of this service. Incoming repor
 
 There are multiple ways to use csp-logger
 
-1. As a comand line tool
+**As a comand line tool**
 
 ```bash
 npm install -g csp-logger
 csp-logger -c config.json
 ```
 
-2. As a standalone app 
+**As a standalone app**
 
 Clone this repository and run 
 ```bash
@@ -25,7 +25,7 @@ npm install .
 node csp-logger.js -c config.json
 ```
 
-3. As a module in your application
+**As a module in your application**
 
 ```javascript
 var cspLogger = require("csp-logger")("config.json"); //accepts a matching object too
