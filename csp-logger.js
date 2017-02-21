@@ -24,6 +24,8 @@ if (argv.example) {
 
   var store = require('./lib/store').init(config);
 
+  require('./lib/healthz')(server);
+
   server.listen(config.port || 2600, function (reportObject, req) {
     store.save(reportObject);
   });
