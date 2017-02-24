@@ -17,7 +17,7 @@ JS files must pass JSHint using the provided [.jshintrc]() settings.
 
 Additionally, JS files need to be run through [JSBeautify](https://github.com/einars/js-beautify) with the provided [.jsbeautifyrc]().
 
-**TL;DR** Run `grunt clean` before pushing a commit. It will validate and beautify your JS.
+**TL;DR** Run `npm run beautify` before pushing a commit. It will validate and beautify your JS.
 
 #### Variable Naming
 
