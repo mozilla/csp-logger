@@ -2,7 +2,6 @@
   "globals": {
     "module": true,
     "define": true,
-    "requirejs": true,
     "require": true
   },
   "node": true,

@@ -11,7 +11,9 @@
     "url": "git://github.com/mozilla/csp-logger.git"
   },
   "scripts": {
-    "test": "grunt validate"
+    "test": "npm run lint",
+    "beautify": "find lib/ conf/ csp-logger.js -name '*.js*' -print0 | xargs -0 js-beautify -r --config .jsbeautifyrc",
+    "lint": "find lib/ csp-logger.js -name '*.js' -print0 | xargs -0 jshint --config .jshintrc"
   },
   "keywords": [
     "csp",
@@ -46,9 +48,9 @@
     "sequelize": "^2.0.0-dev11"
   },
   "devDependencies": {
-    "grunt": "~0.4.2",
-    "grunt-contrib-jshint": "~0.7.2",
-    "grunt-jsbeautifier": "~0.2.6"
+    "js-beautify": "^1.6.11",
+    "jshint": "^2.9.4",
+    "pre-commit": "^1.2.2"
   },
   "license": "http://www.mozilla.org/MPL/2.0/",
   "engines": {

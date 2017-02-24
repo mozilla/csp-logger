@@ -1,15 +1,13 @@
 {
-    "appenders": [
-        {
-            "category": "csp",
-            "type": "file",
-            "filename": "/tmp/csp.log",
-            "absolute": true,
-            "maxLogSize": 10485760,
-            "backups": 3
-        }
-    ],
-    "levels": {
-        "csp": "INFO"
-    }
+  "appenders": [{
+    "category": "csp",
+    "type": "file",
+    "filename": "/tmp/csp.log",
+    "absolute": true,
+    "maxLogSize": 10485760,
+    "backups": 3
+  }],
+  "levels": {
+    "csp": "INFO"
+  }
 }
