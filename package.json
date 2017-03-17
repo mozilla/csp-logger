@@ -1,6 +1,6 @@
 {
   "name": "csp-logger",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Content Security Policy Logging Service",
   "main": "lib/index.js",
   "bin": {
