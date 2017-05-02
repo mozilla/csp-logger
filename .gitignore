@@ -5,3 +5,4 @@ conf/logger.json
 logger.json
 csp.log
 TODO.txt
+yarn.lock
