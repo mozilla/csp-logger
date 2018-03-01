@@ -2,6 +2,7 @@
   "name": "csp-logger",
   "version": "0.3.1",
   "description": "Content Security Policy Logging Service",
+  "license": "MPL-2.0",
   "main": "lib/index.js",
   "bin": {
     "csp-logger": "csp-logger.js"
@@ -41,18 +42,17 @@
   "homepage": "https://github.com/mozilla/csp-logger",
   "dependencies": {
     "JSV": "~4.0.2",
-    "express": "^4.4.0",
-    "lodash": "^2.4.1",
-    "log4js": "^0.6.14",
+    "express": "^4.16.2",
+    "lodash": "^4.17.5",
+    "log4js": "^2.5.3",
     "optimist": "^0.6.1",
-    "sequelize": "^2.0.0-dev11"
+    "sequelize": "^4.35.0"
   },
   "devDependencies": {
     "js-beautify": "^1.6.11",
     "jshint": "^2.9.4",
     "pre-commit": "^1.2.2"
   },
-  "license": "http://www.mozilla.org/MPL/2.0/",
   "engines": {
     "node": ">=0.10"
   }
